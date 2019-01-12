@@ -1,0 +1,51 @@
+<div fxLayout="column">
+  <div fxLayout="row">
+    <div fxFlex>
+      <div style="opacity: 0.8;font-size: 40px;color: white;margin: auto" class="text name" fxLayoutAlign="center center"
+        *ngIf="userObj">{{userObj}}</div>
+    </div>
+    <div fxFlex fxLayoutAlign="center center" fxLayout="row" (click)="logout()">
+      <i class="material-icons">power_settings_new</i>
+      <div>Logout</div>
+    </div>
+  </div>
+
+  <div  style="height:70px;cursor: pointer;" fxLayoutAlign="center center" (click)="favoriteList()">Favourites Tweets</div>
+
+  <div fxLayout="row" style="height:150px;" fxLayoutAlign="center center">
+    <div>
+      <input type="text" placeholder="search tweets" [(ngModel)]="message">
+    </div>
+    <div>
+      <input type="date" placeholder="date" [(ngModel)]="from">
+    </div>
+    <div (click)="dataFn()">
+      <button [disabled]="message && !message.length">Search</button>
+    </div>
+  </div>
+
+
+
+  <div>
+    <div *ngFor="let data of statusModelArray" style="padding:15px;border-bottom:0.1px solid grey" fxLayout="row">
+      <div  style="padding-right:10px" fxFlex=50px>
+        <img [src]=data.user.profile_image_url>
+      </div>
+      <div *ngIf="data && data.user" fxFlex>
+        <div>{{data.user.name}}</div>
+        <div style="padding:5px 0">{{data.user.description}}</div>
+        <div style="padding:5px 0">{{data.text}}</div>
+      </div>
+      <div fxFlex=50px>
+        <!-- <i class="material-icons">favorite</i> -->
+        <i class="material-icons" (click)="favourite(data)">favorite_border</i>
+      </div>
+    </div>
+    <div *ngIf="statusModelArray && statusModelArray.length==0">
+      No Record Found
+    </div>
+  </div>
+  
+
+
+</div>

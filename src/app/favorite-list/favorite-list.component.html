@@ -1,0 +1,19 @@
+<div>
+    <div *ngFor="let data of favIdsArray" style="padding:15px;border-bottom:0.1px solid grey" fxLayout="row">
+      <div  style="padding-right:10px" fxFlex=50px>
+        <img [src]=data.user.profile_image_url>
+      </div>
+      <div *ngIf="data && data.user" fxFlex>
+        <div>{{data.user.name}}</div>
+        <div style="padding:5px 0">{{data.user.description}}</div>
+        <div style="padding:5px 0">{{data.text}}</div>
+      </div>
+      <div fxFlex=50px>
+        <!-- <i class="material-icons">favorite</i> -->
+        <i class="material-icons" (click)="favourite(data)">favorite_border</i>
+      </div>
+    </div>
+    <div *ngIf="!favIdsArray || favIdsArray.length==0">
+      No Record Found
+    </div>
+  </div>

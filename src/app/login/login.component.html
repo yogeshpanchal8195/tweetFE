@@ -1,0 +1,49 @@
+<div style="position:relative">
+  <div class="parent-container">
+    <div class="parent-inner-container">
+      <mat-tab-group dynamicHeight>
+        <mat-tab label="Login">
+          <div class="example-small-box mat-elevation-z4">
+            <div class="form-container">
+              <form [formGroup]="loginFormGroup">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Email" formControlName="email" name="email">
+                </mat-form-field>
+                <mat-form-field class="example-full-width">\
+                  <input matInput placeholder="Password" type="password" formControlName="password" name="password">
+                </mat-form-field>
+                <div style="color:red" *ngIf="errmsg">{{errmsg}}</div>
+                <button mat-raised-button (click)="loginClick()" [disabled]="!loginFormGroup.valid">Login</button>
+
+              </form>
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab label="SignUp">
+          <div class="example-large-box mat-elevation-z4">
+            <div class="form-container">
+              <form [formGroup]="signUpFormGroup" fxLayout="column">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="User Name" formControlName="name" name="name">
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Email" type="text" formControlName="email" name="email">
+                </mat-form-field>
+                <!-- <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Password" type="password" formControlName="password" name="password">
+                </mat-form-field> -->
+                <div style="color:red" *ngIf="errmsg">{{errmsg}}</div>
+
+                <div>
+                  <button mat-raised-button (click)="signUpClick()" [disabled]="!signUpFormGroup.valid">Signup</button>
+                  <button mat-raised-button (click)="resetClick(signUpFormGroup)">Reset</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+
+</div>
